@@ -3,13 +3,10 @@ const axios = require('axios');
 const inquirer = require('inquirer');
 const util = require('util');
 const fs = require('fs');
+const gs = require('github-scraper');
 
 // Convert to pdf packages, then open
 const convertFactory = require('electron-html-to');
-
-const conversion = convertFactory({
-  converterPath: convertFactory.converters.PDF,
-});
 const open = require('open');
 const pdfTemplate = require('./generateHTML.js');
 
@@ -35,5 +32,10 @@ inquirer
     // Axios to retrieve data from Github api
     axios.get(githubUrl).then(function(res) {
       console.log(res.data);
+
+      // Convert html to pdf
+      const conversion = convertFactory({
+        converterPath: convertFactory.converters.PDF,
+      });
     });
   });
