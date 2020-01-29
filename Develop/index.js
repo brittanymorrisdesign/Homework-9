@@ -3,9 +3,17 @@ const axios = require('axios');
 const inquirer = require('inquirer');
 const util = require('util');
 const fs = require('fs');
+
+// Convert to pdf packages, then open
+const convertFactory = require('electron-html-to');
+
+const conversion = convertFactory({
+  converterPath: convertFactory.converters.PDF,
+});
 const open = require('open');
 const pdfTemplate = require('./generateHTML.js');
 
+// Prompt user for Github username and favorite color
 inquirer
   .prompt([
     {

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/brittanymorrisdesign/Homework-9#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "electron-html-to": "^2.6.0",
     "fs": "0.0.1-security",
     "inquirer": "^7.0.4",
     "open": "^7.0.0",
