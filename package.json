@@ -1,0 +1,26 @@
+{
+  "name": "homework-9",
+  "version": "1.0.0",
+  "description": "Node.js and ES6+ Developer Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brittanymorrisdesign/Homework-9.git"
+  },
+  "author": "Brittany Morris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brittanymorrisdesign/Homework-9/issues"
+  },
+  "homepage": "https://github.com/brittanymorrisdesign/Homework-9#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "fs": "0.0.1-security",
+    "inquirer": "^7.0.4",
+    "open": "^7.0.0",
+    "util": "^0.12.1"
+  }
+}
