@@ -17,7 +17,7 @@ const colors = {
     headerColor: 'white',
     photoBorderColor: '#FEE24C',
   },
-  Red: {
+  red: {
     wrapperBackground: '#DE9967',
     headerBackground: '#870603',
     headerColor: 'white',
@@ -25,8 +25,7 @@ const colors = {
   },
 };
 
-function generateHTML(data) {
-  console.log(data);
+function generateHTML(response, userColor) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -53,8 +52,9 @@ function generateHTML(data) {
          height: 100%;
          }
          .wrapper {
-         background-color: ${colors[data.color].wrapperBackground};
+         background-color: ${colors[userColor].wrapperBackground};
          padding-top: 100px;
+         height: 490px;
          }
          body {
          background-color: white;
@@ -95,8 +95,8 @@ function generateHTML(data) {
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: ${colors[data.color].headerBackground};
-         color: ${colors[data.color].headerColor};
+         background-color: ${colors[userColor].headerBackground};
+         color: ${colors[userColor].headerColor};
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -107,7 +107,7 @@ function generateHTML(data) {
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid ${colors[data.color].photoBorderColor};
+         border: 6px solid ${colors[userColor].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -115,8 +115,11 @@ function generateHTML(data) {
          text-align: center;
          }
          .photo-header h1 {
-         margin-top: 10px;
+         margin-top: 20px;
          }
+         .photo-header h2 { 
+          margin-top: 40px;
+          }
          .links-nav {
          width: 100%;
          text-align: center;
@@ -127,18 +130,21 @@ function generateHTML(data) {
          display: inline-block;
          margin: 5px 10px;
          }
+         i {
+           margin-right: 5px;
+         }
          .workExp-date {
          font-style: italic;
          font-size: .7em;
          text-align: right;
          margin-top: 10px;
+         text-align: center;
          }
          .container {
          padding: 50px;
          padding-left: 100px;
          padding-right: 100px;
          }
-
          .row {
            display: flex;
            flex-wrap: wrap;
@@ -146,12 +152,11 @@ function generateHTML(data) {
            margin-top: 20px;
            margin-bottom: 20px;
          }
-
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: ${colors[data.color].headerBackground};
-           color: ${colors[data.color].headerColor};
+           background-color: ${colors[userColor].headerBackground};
+           color: ${colors[userColor].headerColor};
            margin: 20px;
          }
          
@@ -159,18 +164,62 @@ function generateHTML(data) {
          flex: 1;
          text-align: center;
          }
-
          a, a:hover {
          text-decoration: none;
          color: inherit;
          font-weight: bold;
          }
-
          @media print { 
           body { 
             zoom: .75; 
           } 
          }
-      </style>`;
+      </style>
+      <body>
+      <div class="wrapper">
+      <div class="main">
+        <div class="row">
+          <div class="col">
+            <div class="photo-header">
+              <img class="photo-heager" src="${response.data.avatar_url}"></img>
+                <h1 class="photo-header">Hi!</h1>
+                  <h2 class="photo-header">My name is ${response.data.username}</h2>
+                  <div class="row">
+                  <nav class="links-nav">
+                  <a class="nav-link" id="location" href="#"><h6><i class="fas fa-location-arrow"></i>${response.data.location}</h6></a>
+                  <a class="nav-link" id="GitHub" href="${response.data.html_url}"><h6><i class="fab fa-github"></i>GitHub</h6></a>
+                <a class="nav-link" id="Portfolio" href="${response.data.blog}"><h6><i class="fas fa-rss-square"></i>Blog</h6></a>
+              </nav>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+          <div class="container">
+            <div class="workExp-date"><h3>${response.data.bio}</h3></div>
+              <div class="row">
+                <div class="col">
+                  <div class="card"><h3>Public Repositories</h3>
+                      <h4>${response.data.public_repos}</h4>
+                        </div>
+                          <div class="card"><h3>GitHub Stars</h3>
+                          <h4>${response.data.stars}</h4>
+                          </div>
+                          </div>
+                        <div class="col">
+                      <div class="card"><h3>Followers</h3>
+                    <h4>${response.data.followers}</h4>
+                  </div>
+                <div class="card"><h3>Following</h3>
+              <h4>${response.data.following}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="wrapper"></div>
+  </div>
+</body>
+</html>`;
 }
+
 module.exports = generateHTML;
