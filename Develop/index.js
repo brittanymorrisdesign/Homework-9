@@ -8,9 +8,10 @@ const pdf = require('html-pdf');
 const html2 = fs.readFileSync('./result.html', 'utf8'); // to your html file
 
 // Convert to pdf packages, then open
-const open = require('open');
+
 const generateHTML = require('./generateHTML.js');
 
+// Write the file, modify it to a promise
 const writeFileAsync = util.promisify(fs.writeFile);
 
 // Prompt user for Github username and favorite color
@@ -31,16 +32,18 @@ inquirer
   ])
   .then(function(userResponse) {
     // Urls for axios requests
-    const queryUrl = `https://api.github.com/users/${userResponse.username}/repos?per_page=100`;
-    const queryUrl2 = `https://api.github.com/users/${userResponse.username}/repos`;
-    const starredUrl = `https://api.github.com/users/${userResponse.username}/starred?per_page=100`;
+    const queryUrl = `https://api.github.com/users/${userResponse.username}`;
+    const starredUrl = `https://api.github.com/users/${userResponse.username}/starred`;
 
     // Axios to retrieve data from Github api
     axios.get(queryUrl).then(function(userName) {
       const userInfo = userName.data;
       console.log(userInfo);
-      axios.get(queryUrl2).then(function(result) {
+
+      axios.get(starredUrl).then(function(result) {
         console.log(result);
+
+        // Generates user results in html and pdf
         const html = generateHTML(userResponse);
         const options = { format: 'Letter' };
 
