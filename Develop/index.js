@@ -5,6 +5,8 @@ const util = require('util');
 const fs = require('fs');
 const pdf = require('html-pdf');
 
+const html2 = fs.readFileSync('./result.html', 'utf8'); // to your html file
+
 // Convert to pdf packages, then open
 const open = require('open');
 const generateHTML = require('./generateHTML.js');
@@ -43,7 +45,7 @@ inquirer
         const options = { format: 'Letter' };
 
         fs.writeFileSync('result.html', html);
-        pdf.create(html, options).toFile('result.pdf', function(err, res) {
+        pdf.create(html2, options).toFile('result.pdf', function(err, res) {
           if (err) return console.log(err);
           console.log(res);
         });
