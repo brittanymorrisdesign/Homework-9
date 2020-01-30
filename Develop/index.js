@@ -5,7 +5,6 @@ const util = require('util');
 const fs = require('fs');
 
 // Convert to pdf packages, then open
-const convertFactory = require('electron-html-to');
 const open = require('open');
 const generateHTML = require('./generateHTML.js');
 
