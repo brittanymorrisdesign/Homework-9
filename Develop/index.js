@@ -3,6 +3,7 @@ const axios = require('axios');
 const inquirer = require('inquirer');
 const util = require('util');
 const fs = require('fs');
+const pdf = require('html-pdf');
 
 // Convert to pdf packages, then open
 const open = require('open');
@@ -36,30 +37,17 @@ inquirer
     axios.get(queryUrl).then(function(userName) {
       const userInfo = userName.data;
       console.log(userInfo);
-      axios
-        .get(queryUrl2)
-        .then(function(result) {
-          console.log(result);
-          const makeHTML = generateHTML(userResponse);
-          return writeFileAsync(`${userInfo.name}.html`, makeHTML);
-        }) // Call generateHTML to make into HTML doc
-        .then(function(genHTML) {
-          console.log('Successfully wrote to index.html');
-          const conversion = convertFactory({
-            converterPath: convertFactory.converters.PDF,
-          });
+      axios.get(queryUrl2).then(function(result) {
+        console.log(result);
+        const html = generateHTML(userResponse);
+        const options = { format: 'Letter' };
 
-          conversion({ html: genHTML }, function(err, result) {
-            if (err) {
-              return console.error(err);
-            }
-
-            result.stream.pipe(fs.createWriteStream(`"test.pdf"`));
-            conversion.kill();
-          });
-        })
-        .catch(function(err) {
-          console.log(err);
+        fs.writeFileSync('result.html', html);
+        pdf.create(html, options).toFile('result.pdf', function(err, res) {
+          if (err) return console.log(err);
+          console.log(res);
         });
+        console.log('Successfully wrote to result.html');
+      });
     });
   });
