@@ -3,7 +3,6 @@ const axios = require('axios');
 const inquirer = require('inquirer');
 const util = require('util');
 const fs = require('fs');
-const gs = require('github-scraper');
 
 // Convert to pdf packages, then open
 const convertFactory = require('electron-html-to');
