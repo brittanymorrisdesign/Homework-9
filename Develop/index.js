@@ -20,16 +20,16 @@ const questions = [
   },
 ];
 // Prompt user for Github username and favorite color
-inquirer.prompt(questions).then(function({ username, color }) {
+inquirer.prompt(questions).then(({ username, color }) => {
   console.log(username, color);
   const queryUrl = `https://api.github.com/users/${username}`;
   // Axios to retrieve data from Github api
-  axios.get(queryUrl).then(function(response) {
+  axios.get(queryUrl).then(response => {
     console.log(response.data);
     // Generates user results in html and pdf
     pdf
       .create(generateHTML(response, color))
-      .toFile('./profile.pdf', function(err, res) {
+      .toFile('./profile.pdf', (err, res) => {
         if (err) return console.log(err);
         console.log(res);
       });

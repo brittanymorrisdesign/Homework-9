@@ -183,7 +183,7 @@ function generateHTML(response, userColor) {
             <div class="photo-header">
               <img class="photo-heager" src="${response.data.avatar_url}"></img>
                 <h1 class="photo-header">Hi!</h1>
-                  <h2 class="photo-header">My name is ${response.data.username}</h2>
+                  <h2 class="photo-header">My name is Brittany </h2>
                   <div class="row">
                   <nav class="links-nav">
                   <a class="nav-link" id="location" href="#"><h6><i class="fas fa-location-arrow"></i>${response.data.location}</h6></a>
