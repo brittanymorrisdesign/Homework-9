@@ -6,7 +6,7 @@ Objective: Command-line application that dynamically generates a PDF profile fro
 # Developer Profile Generator
 The user will be prompted for a favorite color, which will be used as the background color for cards.
 
-
+![nodejs](https://user-images.githubusercontent.com/44029053/73587199-026a0e00-4487-11ea-9d79-0dd98931070c.gif)
 
 The PDF will be populated with the following:
 
