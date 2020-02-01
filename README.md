@@ -31,12 +31,12 @@ I WANT a developer profile generator
 SO THAT I can easily prepare reports for stakeholders
 ```
 # Technologies Used 
-• Javascript<br />
-• Node.js<br />
-• Css<br />
-• npm modules<br />
+* Javascript
+* Node.js
+* Css
+* npm modules
 
 # Dependencies
-• Axios<br />
-• Inquirer<br />
-• html-pdf<br />
+* Axios
+* Inquirer
+* html-pdf
