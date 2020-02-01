@@ -6,6 +6,8 @@ Objective: Command-line application that dynamically generates a PDF profile fro
 # Developer Profile Generator
 The user will be prompted for a favorite color, which will be used as the background color for cards.
 
+
+
 The PDF will be populated with the following:
 
 * Profile image
