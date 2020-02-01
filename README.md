@@ -30,4 +30,13 @@ I WANT a developer profile generator
 
 SO THAT I can easily prepare reports for stakeholders
 ```
-Built With: Javascript, Node.js, npm modules
+# Technologies Used 
+• Javascript
+• Node.js
+• Css
+• npm modules
+
+# Dependencies
+• Axios
+• Inquirer
+• html-pdf
