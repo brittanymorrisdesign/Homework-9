@@ -25,7 +25,7 @@ const colors = {
   },
 };
 
-function generateHTML(response, userColor, stars) {
+function generateHTML(response, userColor) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -203,7 +203,7 @@ function generateHTML(response, userColor, stars) {
                       <h4>${response.data.public_repos}</h4>
                         </div>
                           <div class="card"><h3>GitHub Stars</h3>
-                          <h4>${stars}</h4>
+                          <h4>${response.data.public_gists}</h4>
                           </div>
                           </div>
                         <div class="col">

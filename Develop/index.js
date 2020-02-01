@@ -28,16 +28,11 @@ inquirer.prompt(questions).then(({ username, color }) => {
   axios.get(queryUrl).then(response => {
     console.log(response.data);
     // Generates user results in html and pdf
-    const queryUrl2 = `https://api.github.com/users/${username}/starred`;
-    let stars = axios.get(queryUrl2).then(function(resStar) {
-      const starCount = resStar.data[0].stargazers_count;
-      stars = starCount;
 
-      const html = generateHTML(response, color, stars);
-      pdf.create(html).toFile('./profile.pdf', function(err, res) {
-        if (err) return console.log(err);
-        console.log(res);
-      });
+    const html = generateHTML(response, color);
+    pdf.create(html).toFile('./profile.pdf', (err, res) => {
+      if (err) return console.log(err);
+      console.log(res);
     });
   });
 });
