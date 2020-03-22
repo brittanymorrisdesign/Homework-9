@@ -1,10 +1,8 @@
 # Homework-9
-Node.js and ES6+
+Developer Profile Generator: Node.js and ES6+
 
-Objective: Command-line application that dynamically generates a PDF profile from a GitHub username.
-
-# Developer Profile Generator
-The user will be prompted for a favorite color, which will be used as the background color for cards.
+# Objective
+Command-line application that dynamically generates a PDF profile from a GitHub username. The user will be prompted for a favorite color, which will be used as the background color for cards.
 
 ![homework-9-nodejs](https://user-images.githubusercontent.com/44029053/73596501-7ee50700-44f0-11ea-9c7b-91b4575ac775.gif)
 
@@ -33,10 +31,5 @@ SO THAT I can easily prepare reports for stakeholders
 # Technologies Used 
 * Javascript
 * Node.js
-* Css
+* CSS
 * npm modules
-
-# Dependencies
-* Axios
-* Inquirer
-* html-pdf
